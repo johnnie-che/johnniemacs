@@ -1,6 +1,6 @@
 (provide 'johnniemacs)
 
-;; Setup bakup options
+;; Setup backup options
 (setq
    backup-by-copying t      ; don't clobber symlinks
    backup-directory-alist
@@ -27,6 +27,7 @@
 (johnniemacs/powerline)
 
 (use-package restart-emacs :ensure t)
+(use-package magit :ensure t)
 
 ;;------
 ;; Evil
@@ -127,6 +128,10 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 ;;(unless (display-graphic-p) (setf ns-command-modifier 'super))
 (setq mac-command-modifier 'super)
+
+(global-hl-line-mode 1)
+(global-display-fill-column-indicator-mode 1)
+(setq-default fill-column 80)
 
 (menu-bar-mode -1)
 
