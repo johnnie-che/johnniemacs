@@ -26,6 +26,8 @@
 (require 'johnniemacs-powerline)
 (johnniemacs/powerline)
 
+(require 'timefile)
+
 (use-package restart-emacs :ensure t)
 (use-package magit :ensure t)
 
@@ -75,10 +77,17 @@
 (use-package swift-helpful
   :ensure t
   :after swift-mode)
-(use-package lsp-sourcekit
-  :ensure t)
+;;(use-package lsp-sourcekit
+;;  :ensure t)
 (use-package company-sourcekit
-  :ensure t)
+  :config (setq company-sourcekit-verbose nil
+		sourcekit-verbose nil
+		sourcekit-sourcekittendaemon-executable "/usr/local/bin/sourcekittendaemon")
+  (add-to-list 'company-backends 'company-sourcekit))
+
+(add-hook 'swift-mode-hook
+	  (lambda ()
+	    (setq-local whitespace-line-column 100)))
 
 ;;---------
 ;; Treemacs
